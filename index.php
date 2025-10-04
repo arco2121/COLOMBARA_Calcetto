@@ -1,5 +1,14 @@
 <?php
     $title = "Calcetto";
+    try {
+        $pdo = new PDO("mysql:host=localhost;dbname=colombara1_calcetto", "root", "");
+    }catch(PDOException $error)
+    {
+        die("Errore" . $error);
+    }
+    $sta = $pdo->prepare("SELECT * from campi");
+    $sta->execute();
+    $campi = $sta->fetchAll();
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,9 +21,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div>
-        <h1><?=$title?></h1>
-        <a href="creacampo.php">Crea</a>
-    </div>
+    <h1><?=$title?></h1>
+    <a href="creacampo.php">Crea</a>
+
+    <?php foreach ($campi as $c) {?>
+        <div ><h2><?=$c['nome']?></h2><img src="<?=$c['url']?>"><h4><?=$c['spettatori']?></h4></div>
+    <?php }?>
 </body>
 </html>

@@ -1,0 +1,4 @@
+1- Collegati al localhost come datasource 
+2- Crea il database
+3- Prndi il dump del database e scrivi use "nome del data"
+4- Aggiungilo poi come datasource dopo aver eseguito il dump

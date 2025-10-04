@@ -1,20 +1,28 @@
 <?php
 
-class CampoDaCalcio
-{
+class CampoDaCalcio {
     private string $nome;
-    private string $url;
     private int $spettatori;
-
-    public function __construct(string $nome, string $url = "", int $spettatori)
+    private string $url;
+    public function __construct($nome, $spettatori, $url)
     {
         $this->nome = $nome;
-        $this->url = $url;
         $this->spettatori = $spettatori;
+        $this->url = $url;
     }
-
-    public function __toString()
+    public function getNome()
     {
-        return $this->nome . " - " . $this->url . " - " . $this->spettatori;
+        return $this->nome;
+    }
+    public function getSpettatori()
+    {
+        return $this->spettatori;
+    }
+    public function getUrl()
+    {
+        return $this->url;
+    }
+    public function __toString() {
+        return "Campo da calcio: " . $this->nome . ", spettatori: " . $this->spettatori;
     }
 }

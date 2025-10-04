@@ -8,13 +8,11 @@ if(!empty($_POST))
     $nome = $_POST['nome'];
     $spettatori = intval($_POST['spettatori']);
     $url = $_POST['url'];
-    //var_dump($nome, $spettatori, $url);
 }
-
 $campetto = new CampoDaCalcio($nome, $url, $spettatori);
 print($campetto);
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=COLOMBARA_Calcetto", "root", "");
+    $pdo = new PDO("mysql:host=localhost;dbname=colombara1_calcetto", "root", "");
     echo "Americaya";
 }catch(PDOException $error)
 {
@@ -27,10 +25,10 @@ try{
     $state -> bindParam(':spettatori', $spettatori);
     $state -> bindParam(':url', $url);
     $state -> execute();
+    $campi = $state -> fetchAll();
 }catch(PDOException $error)
 {
     die("Errore" . $error);
 }
-
-$id = $pdo -> lastInsertId();
+http_redirect("index.php");
 ?>
